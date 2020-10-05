@@ -1,0 +1,22 @@
+.currencyContainer {
+    height: 80vh;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.backButton{
+    margin: 0 auto;
+    text-decoration: none;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    background-color: #0f152b;
+    padding: 13px 31px;
+    width: max-content;
+    transition: all 0.5s;
+}
+
+.backButton:hover{
+    background-color: #12193f;
+}
