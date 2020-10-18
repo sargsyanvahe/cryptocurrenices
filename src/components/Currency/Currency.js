@@ -1,12 +1,11 @@
 import React from "react";
-import Loading from "../Loading";
-
 import { Link } from "react-router-dom";
 
-import withAPI from "../../hoc/withAPI";
+import Loading from "../Loading";
+
+import { getSpecificCurrency } from "../../api";
 
 import './Currency.css'
-
 
 class Currency extends React.Component {
 
@@ -24,7 +23,6 @@ class Currency extends React.Component {
 
     getData = () => {
         const { match: { params: { id } }, history } = this.props;
-        const { service: { getSpecificCurrency } } = this.props;
 
         getSpecificCurrency(id)
             .then((data) => {
@@ -32,7 +30,6 @@ class Currency extends React.Component {
                     history.push('/404');
                 } else {
                     const { name, symbol, rank, price, volume24h, marketCap, totalSupply, percentChange24h } = data;
-
                     this.setState({
                         name,
                         symbol,
@@ -67,7 +64,7 @@ class Currency extends React.Component {
         }
 
         return (
-            <div className='currencyContainer'>
+            <div className='currency-container'>
                 <h1>{symbol}</h1>
                 <h2>{name}</h2>
                 <p>Rank: {rank}</p>
@@ -83,10 +80,10 @@ class Currency extends React.Component {
                         className={percentChange24h[0] === '-' ? 'percent-fallen' : 'percent-raised'}>{percentChange24h[0] === '-' ? ' ↓' : ' ↑'}</span>
                 </div>
                 <hr/>
-                <Link className='backButton' to='/'>Back to Main</Link>
+                <Link className='back-button' to='/'>Back to Main</Link>
             </div>
         )
     }
 }
 
-export default withAPI(Currency);
+export default Currency

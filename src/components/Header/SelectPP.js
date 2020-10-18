@@ -7,7 +7,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
 import { connect } from "react-redux";
-import { setPerPage } from "../../action";
+import { setPerPage } from "../../redux/actions";
 
 const useStyles = makeStyles((theme) => ({
     formControl: {

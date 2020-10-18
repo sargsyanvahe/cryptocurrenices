@@ -1,9 +1,9 @@
 import React from "react";
-import SearchContainer from "./SearchContainer";
-import SelectPP from "./SelectPP";
-
 import { withRouter } from 'react-router-dom'
 import { Link } from "react-router-dom";
+
+import SearchContainer from "./SearchContainer";
+import SelectPP from "./SelectPP";
 
 import logo from '../../assets/logo.png';
 
@@ -14,9 +14,9 @@ function Header(props) {
     const path = props.location.pathname.split('/')[1];
 
     return (
-        <div className="Header">
+        <div className="header">
             <Link to={'/'}>
-                <img className='Header-logo' src={logo} alt=""/>
+                <img className='header-logo' src={logo} alt=""/>
             </Link>
             <SearchContainer/>
             {path === 'page' && <SelectPP/>}

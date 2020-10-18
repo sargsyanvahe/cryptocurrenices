@@ -1,12 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons'
 
-import { Link } from "react-router-dom";
-
-import withAPI from "../../hoc/withAPI";
-
+import { getAutoCompleteCurrency } from "../../api";
 
 class SearchContainer extends React.Component {
 
@@ -17,7 +15,6 @@ class SearchContainer extends React.Component {
     };
 
     getData = async (name) => {
-        const { service: { getAutoCompleteCurrency } } = this.props;
 
         await getAutoCompleteCurrency(name)
             .then(data => {
@@ -48,7 +45,6 @@ class SearchContainer extends React.Component {
 
         return (
             <div className='search-container'>
-                {/*<input value={this.state.value} onChange={this.handleChange} type='text'/>*/}
                 <div className='search-panel'>
                     <input maxLength="15"
                            onBlur={() => setTimeout(() => {
@@ -97,4 +93,4 @@ function ItemList({ data }) {
     )
 }
 
-export default withAPI(SearchContainer);
+export default SearchContainer

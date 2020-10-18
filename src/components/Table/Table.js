@@ -4,9 +4,9 @@ import ItemList from "./ItemList";
 import Loading from "../Loading";
 import PaginationContainer from "./Pagination";
 
-import withAPI from "../../hoc/withAPI";
 import { connect } from "react-redux";
 import "./Table.css"
+import { getCurrenciesWithPage } from "../../api";
 
 class TableContainer extends React.Component {
 
@@ -58,7 +58,7 @@ class TableContainer extends React.Component {
 
     getData = async (page, perPage) => {
 
-        const { service: { getCurrenciesWithPage }, history } = this.props;
+        const { history } = this.props;
 
         await getCurrenciesWithPage(page, perPage)
             .then(data => {
@@ -108,7 +108,7 @@ function Table({ thElements, data, onPageChange, totalPages, page }) {
         <Loading/>
     ) : (
         <div>
-            <table className="Table">
+            <table className="table">
                 <THead thElements={thElements}/>
                 <ItemList currencies={data.currencies}/>
             </table>
@@ -123,4 +123,4 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps)(withAPI(TableContainer));
+export default connect(mapStateToProps)(TableContainer);

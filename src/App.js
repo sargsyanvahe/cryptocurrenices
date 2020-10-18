@@ -1,19 +1,17 @@
 import React from 'react';
-import Header from "../Header";
-import TableContainer from "../Table";
-import NotFound from "../NotFound";
-import Currency from "../Currency";
+import Header from "./components/Header";
+import { Switch, Route, Redirect } from "react-router-dom";
 
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import TableContainer from "./components/Table";
+import NotFound from "./components/NotFound";
 
-import './App.css';
+import Currency from "./components/Currency";
 
 class App extends React.Component {
 
     render() {
         return (
             <div className="App">
-                <Router>
                     <Header/>
                     <Switch>
                         <Redirect exact from='/' to="/page/1"/>
@@ -22,7 +20,6 @@ class App extends React.Component {
                         <Route path='/404' component={NotFound}/>
                         <Redirect from='*' to='/404'/>
                     </Switch>
-                </Router>
             </div>
         );
     }

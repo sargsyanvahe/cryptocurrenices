@@ -1,10 +1,11 @@
 import React from "react";
+
 import Item from "./Item";
 
 function ItemList({ currencies }) {
 
     return (
-        <tbody className="Table-body">
+        <tbody className="table-body">
         {currencies && currencies.map(currency => <Item key={currency.id} currency={currency}/>)}
         </tbody>
     );
